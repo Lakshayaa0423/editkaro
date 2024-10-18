@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editkaro.in Portfolio</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hero {
+            background-image: url('images/hero-bg.jpg'); /* Replace with your own image */
+            background-size: cover;
+            text-align: center;
+            padding: 100px 20px;
+            color: white;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background-color: #555;
+        }
+
+        .portfolio {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .video-item {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .video-item video {
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .video-item h3 {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .video-item:hover video {
+            transform: scale(1.05);
+        }
+
+        .contact {
+            background-color: #333;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <div class="logo">Editkaro.in</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Bringing Your Ideas to Life</h1>
+        <p>Expert Video Editing & Social Media Marketing</p>
+    </section>
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+        <button class="filter-btn" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="short-form">Short-form Videos</button>
+        <button class="filter-btn" data-filter="long-form">Long-form Videos</button>
+        <button class="filter-btn" data-filter="gaming">Gaming Videos</button>
+        <button class="filter-btn" data-filter="football">Football Edits</button>
+        <button class="filter-btn" data-filter="ecommerce">E-commerce Ads</button>
+        <button class="filter-btn" data-filter="documentary">Documentary Style</button>
+        <button class="filter-btn" data-filter="color-grading">Color Grading</button>
+        <button class="filter-btn" data-filter="anime">Anime Videos</button>
+        <button class="filter-btn" data-filter="ads">Ads</button>
+    </div>
+
+    <!-- Portfolio Section -->
+    <section id="categories" class="portfolio">
+        <div class="video-grid">
+            <!-- Video Item Example -->
+            <div class="video-item short-form">
+                <video autoplay src="short form.mp4" muted loop></video>
+                <h3>Short-form Video 1</h3>
+            </div>
+
+            <div class="video-item long-form">
+                <video autoplay src="logu.mp4.mp4" muted loop></video>
+                <h3>Long-form Video 1</h3>
+            </div>
+
+            <div class="video-item gaming">
+                <video autoplay src="gaming edit.mp4" muted loop></video>
+                <h3>Gaming Video 1</h3>
+            </div>
+
+            <div class="video-item football">
+                <video autoplay src="football edit.mp4" muted loop></video>
+                <h3>football video 1</h3>
+            </div>
+
+            <div class="video-item E-commerce Ads">
+                <video autoplay src="e commerce.mp4" muted loop></video>
+                <h3>E-commerce video 1</h3>
+            </div>
+
+            <div class="video-item Ads">
+                <video autoplay src="ads.mp4" muted loop></video>
+                <h3>Ads video 1</h3>
+            </div>
+
+
+            <!-- Add more video items here for each category -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <p>Contact us for your next video editing or marketing project.</p>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const videoItems = document.querySelectorAll('.video-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+
+                videoItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
